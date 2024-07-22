@@ -18,10 +18,9 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-  
+
     console.log("Submitting with data:", { name, place, age, email, education, contact, password, termsAccepted });
-  
+
     if (name && place && age && email && education && contact && password && termsAccepted) {
       try {
         const response = await axios.post('http://localhost:3005/users/register', {
@@ -34,11 +33,11 @@ const Signup = () => {
           password,
           termsAccepted,
         });
-      
-        console.log("Response:", response); 
-      
+
+        console.log("Response:", response);
+
         if (response.status === 201) {
-          setSuccess('Registration successful. Redirecting to login...');
+          setSuccess('User registered successfully. Redirecting to login...');
           setTimeout(() => {
             navigate('/login');
           }, 2000);
@@ -48,13 +47,11 @@ const Signup = () => {
       } catch (err) {
         console.error("Registration error:", err);
         setError('Registration failed. Please try again.');
-      } 
+      }
     } else {
       setError('Please fill in all fields and accept the terms and conditions.');
     }
   };
-  
-  
 
   return (
     <Container maxWidth="sm">
@@ -66,10 +63,11 @@ const Signup = () => {
         textAlign: 'center',
         backgroundColor: '#EEEEEE', 
       }}>
+        {success && <Alert severity="success" sx={{ mb: 2 }}>{success}</Alert>}
+        {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
         <Typography variant="h4" gutterBottom style={{ color: '#222831' }}>
           Sign Up
         </Typography>
-        {error && <Alert severity="error">{error}</Alert>}
         <form onSubmit={handleSubmit} sx={{ mt: 2 }}>
           <TextField
             label="Name"
@@ -313,19 +311,21 @@ const Signup = () => {
             fullWidth
             variant="contained"
             sx={{
-              mt: 3,
-              backgroundColor: '#222831',
+              backgroundColor: '#76ABAE',
+              color: '#EEEEEE',
               '&:hover': {
-                backgroundColor: '#76ABAE',
+                backgroundColor: '#222831',
               },
             }}
           >
             Sign Up
           </Button>
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="body2" color="textSecondary">
+              Already have an account? <Link href="/login" variant="body2">Log In</Link>
+            </Typography>
+          </Box>
         </form>
-        <Typography sx={{ mt: 3, color: '#31363F' }}>
-          Already have an account? <Link href="/login" underline="hover">Login</Link>
-        </Typography>
       </Box>
     </Container>
   );

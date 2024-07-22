@@ -1,31 +1,22 @@
 import React, { useState } from 'react';
-import { Grid, Paper, Typography, Button, Container, TextField } from '@mui/material';
+import { Grid, Paper, Typography, Button, Container, Alert } from '@mui/material';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
-const CheckoutPage = ({ isBookAvailable }) => {
-  const { id } = useParams(); // Fetching the id parameter from the URL
-  const [paymentDetails, setPaymentDetails] = useState('');
+const CheckoutPage = () => {
+  const { id } = useParams();
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleConfirmPayment = async () => {
     try {
-      if (!paymentDetails) {
-        setCheckoutError('Please provide payment details.');
-        return;
-      }
-
-      // Proceed with updating book status using bookId (which is 'id' from URL params)
       const response = await axios.put(`http://localhost:3005/books/rental-status/${id}`, {
-        available: false, // Assuming false means rented or not available
+        available: false,
       });
       console.log('Book status updated:', response.data);
-
-      // Additional logic to handle payment processing with paymentDetails
-      console.log('Payment details:', paymentDetails);
-
-      // Reset form and state after successful checkout
-      setPaymentDetails('');
+      setSuccessMessage('The book is rented successfully!');
+      setPaymentConfirmed(true);
       setCheckoutError('');
     } catch (error) {
       console.error('Error confirming payment:', error);
@@ -38,6 +29,11 @@ const CheckoutPage = ({ isBookAvailable }) => {
       <Grid container justifyContent="center">
         <Grid item xs={12} md={8}>
           <Paper sx={{ p: 3 }}>
+            {paymentConfirmed && (
+              <Alert severity="success" sx={{ mb: 2 }}>
+                {successMessage}
+              </Alert>
+            )}
             <Grid container justifyContent="space-between" alignItems="center">
               <Grid item>
                 <Button
@@ -45,7 +41,13 @@ const CheckoutPage = ({ isBookAvailable }) => {
                   to="/books"
                   variant="contained"
                   color="secondary"
-                  sx={{ marginBottom: '20px', backgroundColor: '#76ABAE', fontSize:10,color: '#222831', '&:hover': { backgroundColor: '#DDDDDD',color:"#222831" } }}
+                  sx={{
+                    marginBottom: '20px',
+                    backgroundColor: '#76ABAE',
+                    fontSize: 10,
+                    color: '#222831',
+                    '&:hover': { backgroundColor: '#DDDDDD', color: '#222831' },
+                  }}
                 >
                   Back to Books
                 </Button>
@@ -55,25 +57,29 @@ const CheckoutPage = ({ isBookAvailable }) => {
               Checkout
             </Typography>
             <Typography variant="body1" paragraph>
-              Provide your payment details and confirm your rental:
+              {paymentConfirmed ? "Your book has been rented successfully!" : "Confirm your rental by clicking the button below:"}
             </Typography>
-            <TextField
-              fullWidth
-              label="Payment Details"
-              margin="normal"
-              value={paymentDetails}
-              onChange={(e) => setPaymentDetails(e.target.value)}
-              error={!!checkoutError}
-              helperText={checkoutError}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ marginTop: '20px', backgroundColor: '#222831', color: '#FFFFFF', '&:hover': { backgroundColor: '#1A1D24' } }}
-              onClick={handleConfirmPayment}
-            >
-              Confirm Payment
-            </Button>
+            {!paymentConfirmed && (
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  marginTop: '20px',
+                  backgroundColor: '#222831',
+                  color: '#FFFFFF',
+                  '&:hover': { backgroundColor: '#1A1D24' },
+                }}
+                onClick={handleConfirmPayment}
+                disabled={paymentConfirmed}
+              >
+                Confirm Payment
+              </Button>
+            )}
+            {checkoutError && (
+              <Typography color="error" sx={{ mt: 2 }}>
+                {checkoutError}
+              </Typography>
+            )}
           </Paper>
         </Grid>
       </Grid>
