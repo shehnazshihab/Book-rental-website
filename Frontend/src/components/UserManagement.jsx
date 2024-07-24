@@ -252,6 +252,7 @@ const UserManagement = () => {
                     <TableCell>{user.education}</TableCell>
                     <TableCell>{user.contact}</TableCell>
                     <TableCell>
+                    <Box display="flex" alignItems="center" gap={1}>
                       <Button
                         variant="contained"
                         color="primary"
@@ -264,10 +265,11 @@ const UserManagement = () => {
                         variant="contained"
                         color="error"
                         onClick={() => handleDeleteUser(user._id)}
-                        sx={{ backgroundColor: '#31363F', '&:hover': { backgroundColor: '#222831', color: '#EEEEEE' }, ml: 1 }}
+                        sx={{ backgroundColor: '#31363F', '&:hover': { backgroundColor: '#222831', color: '#EEEEEE' } }}
                       >
                         Delete
                       </Button>
+                    </Box>
                     </TableCell>
                   </TableRow>
                 ))}

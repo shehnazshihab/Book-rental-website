@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, Button, IconButton } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import lithubLogo from './lithubb.png'; // Import the logo image
 
 const Navbar = ({ isLoggedIn, isAdmin, handleLogout }) => {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ const Navbar = ({ isLoggedIn, isAdmin, handleLogout }) => {
   return (
     <AppBar position="static" sx={{ backgroundColor: '#222831', color: '#EEEEEE', fontFamily: 'Poppins, sans-serif' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={lithubLogo} alt="LitHUB Logo" style={{ height: '40px', marginRight: '10px' }} /> {/* Add the logo */}
           <Typography variant="h6" sx={{ color: '#EEEEEE' }}>
             LitHUB
           </Typography>
