@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Grid, Card, CardMedia, Button } from '@mui/material';
+import { Container, Typography, Grid, Card, CardMedia,Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const genres = [
@@ -16,6 +16,14 @@ const genres = [
 
 const GenrePage = () => {
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="md" sx={{ mt: 4, mb: 8 }}>
       <Typography variant="h4" gutterBottom>Explore Genres</Typography>
       <Grid container spacing={3}>
@@ -37,6 +45,7 @@ const GenrePage = () => {
         ))}
       </Grid>
     </Container>
+    </Box>
   );
 };
 

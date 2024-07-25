@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Paper, Typography, Button, Container, Alert } from '@mui/material';
+import { Grid, Paper, Typography, Button, Container, Alert ,Box} from '@mui/material';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 
@@ -25,6 +25,14 @@ const CheckoutPage = () => {
   };
 
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <Grid container justifyContent="center">
         <Grid item xs={12} md={8}>
@@ -84,6 +92,7 @@ const CheckoutPage = () => {
         </Grid>
       </Grid>
     </Container>
+    </Box>
   );
 };
 

@@ -54,6 +54,14 @@ const Signup = () => {
   };
 
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="sm">
       <Box sx={{
         mt: 8,
@@ -328,6 +336,7 @@ const Signup = () => {
         </form>
       </Box>
     </Container>
+    </Box>
   );
 };
 

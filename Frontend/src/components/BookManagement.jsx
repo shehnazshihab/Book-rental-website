@@ -143,6 +143,14 @@ const BookManagement = () => {
   };
 
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container>
       <Box sx={{ mt: 4, textAlign: 'center' }}>
         <Typography variant="h4" gutterBottom style={{ color: '#76ABAE', fontWeight: 'bold', marginBottom: 4 }}>
@@ -401,6 +409,7 @@ const BookManagement = () => {
       </Dialog>
 
     </Container>
+    </Box>
   );
 };
 

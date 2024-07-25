@@ -96,6 +96,14 @@ const BookDetails = () => {
   }
 
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
@@ -183,6 +191,7 @@ const BookDetails = () => {
         </Grid>
       </Grid>
     </Container>
+    </Box>
   );
 };
 

@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   return (
-    
-    <Container
+    <Box
+      disableGutters
       sx={{
         height: '100vh',
-        width :'100vw',
+        width: '100vw',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundImage: 'url(https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
-        backgroundSize: '100% 100%',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
@@ -35,9 +35,9 @@ const AdminDashboard = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          flexGrow: 1,
         }}
       >
-
         <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
             variant="contained"
@@ -50,7 +50,6 @@ const AdminDashboard = () => {
               width: '200px',
               height: '60px',
               fontSize: '18px',
-              
             }}
           >
             User Management
@@ -73,7 +72,7 @@ const AdminDashboard = () => {
           </Button>
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 };
 

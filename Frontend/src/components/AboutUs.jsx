@@ -1,8 +1,16 @@
 import React from 'react';
-import { Container, Typography, Grid, Paper } from '@mui/material';
+import { Container, Typography, Grid, Paper,Box } from '@mui/material';
 
 const AboutUsPage = () => {
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="md" sx={{ mt: 4, mb: 8 }}>
       <Typography variant="h4" gutterBottom>About Us</Typography>
       <Grid container spacing={3}>
@@ -44,6 +52,7 @@ const AboutUsPage = () => {
         </Grid>
       </Grid>
     </Container>
+    </Box>
   );
 };
 

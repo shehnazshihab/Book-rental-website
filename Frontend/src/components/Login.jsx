@@ -20,16 +20,16 @@ const Login = ({ setIsLoggedIn, setIsAdmin }) => {
 
       if (response.status === 200) {
         const { token, role } = response.data;
-        localStorage.setItem('token', token); // Store the token in localStorage
+        localStorage.setItem('token', token); 
 
         if (role === 'admin') {
           setIsAdmin(true);
           setIsLoggedIn(true);
-          navigate('/admin-dashboard'); // Redirect to admin dashboard upon successful login
+          navigate('/admin-dashboard'); 
         } else {
           setIsAdmin(false);
           setIsLoggedIn(true);
-          navigate('/'); // Redirect to homepage for regular users
+          navigate('/'); 
         }
       } else {
         setError('Invalid email or password');
@@ -41,7 +41,15 @@ const Login = ({ setIsLoggedIn, setIsAdmin }) => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
+    <Container maxWidth="sm" >
       <Box sx={{
         mt: 8,
         p: 4,
@@ -140,6 +148,7 @@ const Login = ({ setIsLoggedIn, setIsAdmin }) => {
         </Typography>
       </Box>
     </Container>
+    </Box>
   );
 };
 

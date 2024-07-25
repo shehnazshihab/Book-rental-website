@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Typography, Grid, Card, CardContent, CardMedia } from '@mui/material';
+import { Container, Typography, Grid, Card, CardContent, CardMedia ,Box} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const BookListPage = () => {
@@ -20,6 +20,14 @@ const BookListPage = () => {
   };
 
   return (
+    <Box sx={{ 
+      backgroundColor: '#F6FEFF', 
+      height: '100vh', 
+      width: '100vw', 
+      display: 'flex',  
+      p: 0, 
+      m: 0 
+    }}>
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Typography variant="h4" gutterBottom>
         Books
@@ -60,6 +68,7 @@ const BookListPage = () => {
         ))}
       </Grid>
     </Container>
+    </Box>
   );
 };
 

@@ -20,7 +20,7 @@ const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    // Check if user was previously logged in (e.g., from localStorage)
+    // Check if user was previously logged in 
     const userLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const userIsAdmin = localStorage.getItem('isAdmin') === 'true';
 
